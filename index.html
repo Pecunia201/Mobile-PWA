@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Banking App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#RRGGBB">
+</head>
+<body>
+    <!-- Header -->
+    <div class="cards-title">Cards</div>
+    <i class="fas fa-user top-right-profile"></i>
+    <!-- Cards -->
+    <div class="container">
+        <div class="bankcard blue active">
+            <svg class="pattern blue-pattern"><path d="M0 50 Q50 0 100 50 Q150 100 200 50 Q250 0 300 50 Q350 100 300 100 Q250 150 200 100 Q150 50 100 100 Q50 150 0 100 Z"></path></svg>
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+        </div>
+        <div class="bankcard orange inactive">
+            <svg class="pattern orange-pattern"><path d="M0 50 Q50 0 100 50 Q150 100 200 50 Q250 0 300 50 Q350 100 300 100 Q250 150 200 100 Q150 50 100 100 Q50 150 0 100 Z"></path></svg>
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+        </div>
+    </div>
+    <!-- Dot Indicators -->
+    <div class="dots">
+        <div class="dot" id="blue-dot"></div>
+        <div class="dot" id="orange-dot"></div>
+    </div>
+    <!-- Account Balance Box -->
+    <div class="balance-box">
+        <span class="balance-title">Account Balance</span>
+        <span class="balance-amount" id="balance-amount"></span>
+        <div class="balance-buttons">
+            <button class="button deposit-button"><i class="fas fa-arrow-down"></i> Deposit</button>
+            <button class="button transfer-button"><i class="fas fa-exchange-alt"></i> Transfer</button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal transfer-modal" id="transfer-modal">
+        <div class="modal-content transfer-modal-content">
+            <button class="button back-button" id="close-transfer-modal"><i class="fas fa-arrow-left"></i></button>
+            <div class="input-wrapper">
+                <span class="currency-symbol">£</span>
+                <input type="number" id="transfer-input" class="input-field" autocomplete="off" pattern="\d{1,5}(\.\d{0,2})?" placeholder="0.00" maxlength="8">
+            </div>
+            <span class="dynamic-text" id="dynamic-text-transfer">You will input £0.00 into Blue Card.</span>
+            <button class="button modal-button transfer-modal-button" id="submit-transfer"><i class="fas fa-exchange-alt"></i>Transfer</button>
+            <p id="error-message"></p>
+        </div>
+    </div>
+    <div class="modal deposit-modal" id="deposit-modal">
+        <div class="modal-content">
+            <button class="button back-button" id="close-deposit-modal"><i class="fas fa-arrow-left"></i></button>
+            <div class="input-wrapper">
+                <span class="currency-symbol">£</span>
+                <input type="number" id="deposit-input" class="input-field" autocomplete="off" pattern="\d{1,5}(\.\d{0,2})?" placeholder="0.00" maxlength="8">
+            </div>
+            <span class="dynamic-text" id="dynamic-text-deposit">You will input £0.00 into Blue Card.</span>
+            <button class="button modal-button" id="submit-deposit"><i class="fas fa-arrow-down"></i>Deposit</button>
+        </div>
+    </div>
+    <!-- Drag Menu -->
+    <div class="menu" id="menu">
+        <div class="drag-area" id="drag-area">
+            <div class="drag-bar"></div>
+        </div>
+        <h1 class="menu-title">Recent Transactions</h1>
+        <div class="menu-content" id="menu-content"></div>
+    </div>
+    <!-- Landscape Warning -->
+    <div class="landscape-warning">
+        Please rotate your device back to portrait mode to use this website.
+    </div>
+</body>
+</html>

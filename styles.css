@@ -1,0 +1,388 @@
+html body {
+    background: #e4e4e4;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.cards-title {
+    top: 30px;
+    left: 30px;
+    font-weight: bold;
+}
+
+.top-right-profile {
+    top: 34px;
+    right: 30px;
+    border-radius: 8px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: #b86060;
+    color: #d38383;
+    padding-top: 5px;
+}
+
+/* Cards */
+.cards-title, .top-right-profile {
+    position: absolute;
+    font-size: 24px;
+    color: #333;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    height: 200px;
+    margin-top: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.bankcard {
+    width: 75px;
+    height: 100px;
+    border-radius: 10px;
+    position: absolute;
+    transition: transform 0.10s ease-in-out, width 1s ease-in-out, height 1s ease-in-out;
+}
+
+.bankcard.active {
+    transform: translateX(-50%);
+    left: 50%;
+    width: 290px;
+    height: 180px;
+}
+
+.bankcard.blue.active, .bankcard.blue.inactive { background-color: #c2d3fc; }
+.bankcard.blue.inactive { transform: translateX(-60%); left: 0; height: 165px; }
+.bankcard.blue.inactive .bar1, .bankcard.blue.inactive .bar2 { display: none; }
+
+.bankcard.orange.active, .bankcard.orange.inactive { background-color: #ffd1be; }
+.bankcard.orange.inactive { transform: translateX(60%); right: 0; height: 165px; }
+
+/* Card Designs */
+.bar1, .bar2 {
+    height: 5px;
+    background-color: black;
+    position: absolute;
+    left: 30px;
+    border-radius: 15px;
+}
+
+.bar1 { width: 40%; bottom: 40px; }
+.bar2 { width: 30%; bottom: 30px; border-radius: 20px; }
+
+.pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.blue-pattern { fill: rgb(89, 89, 204); }
+.orange-pattern { fill: rgb(255, 175, 77); }
+
+/* Card Dot Indicator */
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 285px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background-color: #ccc; 
+    border-radius: 50%; 
+    margin: 0 5px; 
+}
+
+.dot.active { background-color: #333; }
+
+/* Account Balance Box */
+.balance-box {
+    width: 350px;
+    height: 170px;
+    border-radius: 20px;
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 310px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.balance-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.button {
+    width: 130px;
+    height: 50px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button i { margin-right: 5px; }
+
+.deposit-button { background-color: #4caf50; }
+.transfer-button { background-color: #d8c415; }
+.deposit-button:active { background-color: #388e3c; }
+.transfer-button:active { background-color: #b48611; }
+
+.balance-title {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 30px;
+}
+
+.modal-content {
+    background: #f2f2f2;
+    /* override bootstrap styles */    
+    border-radius: 20px !important;
+    border: none !important;
+    
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-height: 330px;
+    overflow: hidden;
+}
+
+.input-field {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.modal-button {
+    background-color: #4caf50;
+    margin-bottom: 10px;
+}
+
+.transfer-modal-button {
+    background-color: #d8c415;
+}
+
+.dynamic-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    color: #555;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.back-button i {
+    font-size: 24px;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.currency-symbol {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* Drag Menu */
+.menu, .drag-area {
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 35px 35px 0 0;
+}
+
+.menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* height determined in scripts.js */
+}
+
+.drag-area {
+    position: relative;
+    height: 40px;
+    cursor: grab;
+}
+
+.drag-bar {
+    width: 20%;
+    height: 4px;
+    background-color: grey;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+
+/* Menu Content */
+.menu-title {
+    font-size: 20px;
+    margin: 0 20px;
+    text-align: left;
+}
+
+.menu-content {
+    padding: 15px 30px;
+    overflow-y: scroll;
+    height: calc(100% - 65px);
+}
+
+/* Transactions */
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+.transaction-image {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+}
+
+.transaction-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 15px;
+    height: 100%;
+}
+
+.company, .date-time {
+    margin: 0;
+}
+
+.date-time {
+    font-size: 13px;
+    color: #888;
+}
+
+.money {
+    font-size: 15px;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 110px;
+    text-align: right;
+    text-overflow: ellipsis;
+}
+
+.money.positive { color: #3fc23f; }
+
+.transaction-image {
+    background-color: #e6e6fa;
+}
+
+.transaction-image.pastel-blue { background-color: #add8e6; }
+.transaction-image.pastel-pink { background-color: #ffb6c1; }
+.transaction-image.pastel-yellow { background-color: #ffeb99; }
+.transaction-image.pastel-green { background-color: #98fb98; }
+.transaction-image.pastel-orange { background-color: #ffcc99; }
+
+
+/* Landscape Mode Screen*/
+.landscape-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+body.landscape-mode .landscape-warning {
+    display: flex;
+}
