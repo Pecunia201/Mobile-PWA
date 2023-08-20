@@ -1,3 +1,17 @@
+// Detect iOS devices
+if (/iPhone/i.test(navigator.userAgent) && !window.navigator.standalone) {
+    const installPopup = document.getElementById('installPopup');
+    const closePopup = document.getElementById('closePopup');
+    
+    // Show the popup
+    installPopup.style.display = 'block';
+
+    // Close the popup when the close button is clicked
+    closePopup.addEventListener('click', () => {
+        installPopup.style.display = 'none';
+    });
+}
+
 // =====================
 // Initialise Account Balances, Transactions
 // =====================
