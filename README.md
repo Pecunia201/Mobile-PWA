@@ -13,6 +13,7 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 - **Responsive Design**: Tailored exclusively for mobile devices
 - **Simulated Banking Transactions**: View balances, transfer funds between cards
 - **Progressive Web App**: Leverages PWA technology
+- **Network First Caching**: Grabs data from the network first, falls back to cache if fails
 
 ## Features I havent added yet
 
