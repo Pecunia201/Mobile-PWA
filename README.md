@@ -19,3 +19,4 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 - **Push Notifications**: This mock version does not include push notifications.
 - **Download Prompt**: There is no custom prompt asking users to download the app.
 - **Numeric Keyboard**: When entering deposit/transfer amount.
+- Make transactions/deposits more distinct amongst normal transactions
