@@ -1,3 +1,17 @@
+// Detect iOS devices
+if (/iPhone/i.test(navigator.userAgent) && !window.navigator.standalone) {
+    const installPopup = document.getElementById('installPopup');
+    const closePopup = document.getElementById('closePopup');
+    
+    // Show the popup
+    installPopup.style.display = 'block';
+
+    // Close the popup when the close button is clicked
+    closePopup.addEventListener('click', () => {
+        installPopup.style.display = 'none';
+    });
+}
+
 // =====================
 // Initialise Account Balances, Transactions
 // =====================
@@ -200,60 +214,42 @@ document.getElementById('blue-dot').classList.add('active');
 // Drag Menu
 // =====================
 
-// Adjust the menu's height to fill the space under the balance box
+let minHeight, maxHeight;
+const snapThreshold = 20;
+
+// Adjust the minimum height of the menu to fit under the balance box
 const adjustMenuHeight = () => {
-    const balanceBoxBottom = document.querySelector('.balance-box').getBoundingClientRect().bottom; // Find the bottom of the balance box
-    const newHeight = window.innerHeight - balanceBoxBottom - 20; // 20px below the balance box
-    document.querySelector('.menu').style.height = `${newHeight}px`; // Set the menu's height
-    minHeight = newHeight;
+    const balanceBoxBottom = document.querySelector('.balance-box').getBoundingClientRect().bottom;
+    minHeight = window.innerHeight - balanceBoxBottom - 20;
+    document.querySelector('.menu').style.height = `${minHeight}px`;
 };
 
-// Call the function to adjust the menu's height when the page loads or is resized somehow
-['resize', 'load'].forEach(event => window.addEventListener(event, adjustMenuHeight));
+// Adjust the maximum height of the menu to fit under the dots class
+const adjustMaxHeight = () => {
+    const dotsBoxBottom = document.querySelector('.dots').getBoundingClientRect().bottom;
+    maxHeight = window.innerHeight - dotsBoxBottom - 10;
+};
 
-// Drag Menu Functionality
+// Adjust the menu height when the page loads and when the window is resized
+['resize', 'load'].forEach(event => {
+    window.addEventListener(event, adjustMenuHeight);
+    window.addEventListener(event, adjustMaxHeight);
+});
+
+// Dragging functionality
 const menu = document.getElementById('menu');
 const dragArea = document.getElementById('drag-area');
+let startY = 0, currentHeight = minHeight;
 
-let minHeight = window.innerHeight * 0.25;
-const maxHeight = window.innerHeight * 0.55;
-
-// Set the snap thresholds
-const snapThreshold = 0.15 * (maxHeight - minHeight); // 15% above the minimum height
-const downSnapThreshold = 0.15 * maxHeight; // 15% below the maximum height
-
-let startY = 0;
-let currentHeight = minHeight;
-
-
-// Function to transition to a specific height
-const setMenuHeight = (height) => {
+dragArea.addEventListener('touchstart', e => { startY = e.touches[0].clientY; currentHeight = menu.clientHeight; }, { passive: false });
+dragArea.addEventListener('touchmove', e => { menu.style.height = `${Math.max(minHeight, Math.min(currentHeight + startY - e.touches[0].clientY, maxHeight))}px`; }, { passive: false });
+dragArea.addEventListener('touchend', e => {
+    const endHeight = menu.clientHeight;
+    const isDraggingUp = (startY - e.changedTouches[0].clientY) > 0;
+    const newHeight = (isDraggingUp && endHeight - minHeight >= snapThreshold) || (!isDraggingUp && maxHeight - endHeight < snapThreshold) ? maxHeight : minHeight;
     menu.style.transition = "height 0.3s ease";
-    menu.style.height = `${height}px`;
-    setTimeout(() => menu.style.transition = "", 300);
-};
-
-// Detect swipe on the drag area
-dragArea.addEventListener('touchstart', (e) => { // Start of swipe
-    startY = e.touches[0].clientY;
-    currentHeight = menu.clientHeight;
-}, { passive: false });
-
-dragArea.addEventListener('touchmove', (e) => { // While swiping, adjust the menu's height
-    const newHeight = Math.max(minHeight, Math.min(currentHeight + startY - e.touches[0].clientY, maxHeight));
     menu.style.height = `${newHeight}px`;
-}, { passive: false });
-
-dragArea.addEventListener('touchend', (e) => { // End of swipe
-    const endHeight = menu.clientHeight; // Grab the menu's height after the swipe
-    const isDraggingUp = (startY - e.changedTouches[0].clientY) > 0; // Check if the user is dragging up or down
-    
-    // Snap if swipe is released within the snap threshold
-    if ((isDraggingUp && endHeight - minHeight >= snapThreshold) || (!isDraggingUp && maxHeight - endHeight < downSnapThreshold)) { // Snap to max height if 15% above the minimum height
-        setMenuHeight(maxHeight);
-    } else { // Snap to min height if 15% below the maximum height
-        setMenuHeight(minHeight);
-    }
+    setTimeout(() => (menu.style.transition = ""), 300);
 });
 
 // =====================
