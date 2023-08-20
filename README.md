@@ -18,7 +18,7 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 ## Features I havent added yet
 
 - **Push Notifications**: This mock version does not include push notifications.
-- ~~- **Download Prompt**: There is no custom prompt asking users to download the app.~~
+- ~~**Download Prompt**: There is no custom prompt asking users to download the app.~~
 - ~~**Numeric Keyboard**: When entering deposit/transfer amount.~~ added.
 - Make transactions/deposits more distinct amongst normal transactions
 - Change temporary app icons (icons 192x192, 512x512)
