@@ -20,3 +20,4 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 - **Download Prompt**: There is no custom prompt asking users to download the app.
 - ~~**Numeric Keyboard**: When entering deposit/transfer amount.~~ added.
 - Make transactions/deposits more distinct amongst normal transactions
+- Change temporary app icons (icons 192x192, 512x512)
