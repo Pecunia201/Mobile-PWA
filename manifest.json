@@ -1,7 +1,7 @@
 {
   "name": "Bank PWA",
-  "short_name": "PWA",
-  "description": "Bank Progressive Web App",
+  "short_name": "Bank PWA",
+  "description": "A Financial Progressive Web App",
   "start_url": "/Mobile-PWA/",
   "display": "standalone",
   "background_color": "#ffffff",
