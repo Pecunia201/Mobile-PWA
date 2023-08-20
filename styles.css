@@ -133,8 +133,8 @@ html body {
     height: 100%;
 }
 
-.blue-pattern { fill: rgb(89, 89, 204); }
-.orange-pattern { fill: rgb(255, 175, 77); }
+.blue-pattern { fill: #5959cc; }
+.orange-pattern { fill: #ffaf4d; }
 
 /* Card Dot Indicator */
 .dots {
