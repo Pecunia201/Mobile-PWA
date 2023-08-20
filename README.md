@@ -14,7 +14,8 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 - **Simulated Banking Transactions**: View balances, transfer funds between cards
 - **Progressive Web App**: Leverages PWA technology
 
-## Features I decided not to include
+## Features I havent added yet
 
 - **Push Notifications**: This mock version does not include push notifications.
 - **Download Prompt**: There is no custom prompt asking users to download the app.
+- **Numeric Keyboard**: When entering deposit/transfer amount.
