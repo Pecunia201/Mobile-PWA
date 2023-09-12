@@ -1,3 +1,5 @@
+Disclaimer: I needed a lot of help with completing ``scripts.js``, so I can't consider the code to be entirely representative of my proficiency in JavaScript. However, all code was conceptualised and implemented by me.
+
 # Mobile-PWA: Portfolio Mock Banking App
 
 Welcome to Mobile-PWA, my progressive web application designed specifically for mobile, simulating a financial interface and user experience. This project is a part of my portfolio to demonstrate my ability to build sleek, efficient, and user-friendly mobile web applications.
