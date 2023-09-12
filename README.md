@@ -1,4 +1,4 @@
-Disclaimer: I needed a lot of help with completing ``scripts.js``, so I can't consider the code to be entirely representative of my proficiency in JavaScript. However, all code was conceptualised and implemented by me.
+> **Disclaimer**: I got a lot of help to finish ``scripts.js``, so I can't consider the code to be entirely representative of my proficiency in JavaScript. However, all code was conceptualised and implemented by me.
 
 # Mobile-PWA: Portfolio Mock Banking App
 
