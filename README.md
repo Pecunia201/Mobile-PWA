@@ -17,7 +17,7 @@ You can try the live demo here: [https://pecunia201.github.io/Mobile-PWA/](https
 - **Progressive Web App**: Leverages PWA technology
 - **Network First Caching**: Grabs data from the network first, falls back to cache if fails
 
-## Features I havent added yet
+## Features I haven't added yet
 
 - **Push Notifications**: This mock version does not include push notifications.
 - ~~**Download Prompt**: There is no custom prompt asking users to download the app.~~
